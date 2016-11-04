@@ -1,0 +1,15 @@
+DOMAIN=example.com
+#IPFILE=/srv/ip
+
+# the public interface of this machine
+INTERFACE=eth0
+
+# for every sub-domain, the interface identifier part of the IPv6 address (IPv6 without prefix)
+# the index is the hostid used by HostEurope
+# the value must include the : if the prefix is a multiple of 16 (e.g. /64)
+DOMAINS6=(
+    [343926631]=:1234:1234:1234:1234 # machine 1
+    [098345378]=:1234:1234:1234:1234 # machine 2
+)
+
+# vim: ft=sh et ts=4
