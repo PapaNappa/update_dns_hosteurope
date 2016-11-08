@@ -5,8 +5,14 @@
 # 2. extract the prefix
 # 3. based on the DOMAINS6 array in the domains file, update every host using its own interface identifier
 
-source credentials || { echo "credentials file not found, add USER_ID and PASSWORD"; exit 1; }
-source config || { echo "config file not found, see config.example"; exit 1; }
+: ${CONFIG:=/etc/hosteurope-dyndns.conf}
+
+source "$CONFIG" || {
+    echo "Config file not found: $CONFIG"
+    echo "You can change the path by setting the environment variable CONFIG."
+    echo "See hosteurope-dyndns.conf.example for a sample config file."
+    exit 1
+}
 
 : ${IPFILE:=/srv/ip}
 

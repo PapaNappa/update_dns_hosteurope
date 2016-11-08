@@ -1,3 +1,6 @@
+USER_ID='foo@example.com'
+PASSWORD='secret'
+
 DOMAIN=example.com
 #IPFILE=/srv/ip
 
