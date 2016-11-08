@@ -90,6 +90,7 @@ else
 fi
 
 if [ $UPDATE -ne 1 ]; then
+    touch "$IPFILE" # as a log for the last check
     exit 0
 fi
 
@@ -114,5 +115,8 @@ UPDATE_CALL+=(
 "${UPDATE_CALL[@]}" > /dev/null 2> /dev/null || exit 1
 
 # write to $IPFILE
-echo "PREFIX6=$PREFIX6" > "$IPFILE"
+echo "
+# IP updated $(date)
+PREFIX6=$PREFIX6
+" > "$IPFILE"
 
