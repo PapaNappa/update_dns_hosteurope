@@ -77,7 +77,7 @@ newPREFIX6=$(ip -6 addr show dev ${INTERFACE} scope global | gawk '
         return prefix
     }
 
-    /inet6.*mngtmpaddr/ { print getPrefix($2); exit }
+    /inet6.*mngtmpaddr/ && $2 !~ /^f[cd]/{ print getPrefix($2); exit }
 ')
 
 if [ -f "$IPFILE" ]; then
